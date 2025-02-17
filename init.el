@@ -5,20 +5,21 @@
 ;; Add lisp/ to load path
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
-;; Disable start screen
-(setq inhibit-startup-screen t)
+;; Include packages under site-lisp/
+(require 'init-site-lisp)
 
-;; Set Jetbrain Mono NL font
-'(default-frame-alist
-  '((fullscreen . fullscreen)
-    (font . "Jetbrains Mono NL-13")
-    (line-spacing . 0.2)))
-
-;; Disable mouse input
-(require 'disable-mouse) (global-disable-mouse-mode)
-
-;; Disable easy keys
-(require 'no-easy-keys) (no-easy-keys 1) 
+;; Configure customizations
+(require 'init-display)
+(require 'init-startup)
+(require 'init-input)
+(require 'init-desktop)
+(require 'init-windows)
+(require 'init-dired)
+(require 'init-ibuffer)
+(require 'init-eww)
+(require 'init-compilation)
+(require 'init-slime)
+(require 'init-popwin)
 
 (provide 'init)
 
@@ -27,3 +28,4 @@
 ;; no-byte-compile: t
 ;; End:
 ;;; init.el ends here
+(put 'dired-find-alternate-file 'disabled nil)
